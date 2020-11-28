@@ -46,10 +46,16 @@ mdc.init = (markdown) => {
   })
 
   // mindmap
-    const mindmaps = document.querySelectorAll('.markmap-svg');
-    for(const mindmap of mindmaps) {
-        markmap.markmap(mindmap, JSON.parse(mindmap.innerHTML));
-    }
+  const { Markmap, loadCSS, loadJS } = window.markmap;
+  const mindmaps = document.querySelectorAll('#preview .markmap-svg');
+  for(const mindmap of mindmaps) {
+      data = JSON.parse(mindmap.innerHTML)
+      // 1. load assets
+      if (data.styles) loadCSS(data.styles);
+      if (data.scripts) loadJS(data.scripts, { getMarkmap: () => window.markmap });
+      // 2. create markmap
+      Markmap.create(mindmap, null, data.root);
+  }
 
   mdc.inited()
 }
