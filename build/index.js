@@ -10,5 +10,7 @@ request.onload = function () {
     }
   }
 }
-request.open('GET', 'sample.md')
+var params = new window.URLSearchParams(window.location.search);
+document.title = params.get('name')
+request.open('GET', params.get('name'))
 request.send()

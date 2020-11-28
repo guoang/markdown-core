@@ -1,25 +1,302 @@
-# Markdown Core
-
-website.com
-
-http://website.com
-
-https://website.com
-
-test@website.com
-
-Press <kbd>Ctrl</kbd> + <kbd>D</kbd>(or <kbd>Cmd</kbd> + <kbd>D</kbd> on Mac) to bookmark this page.
-
-std::string
-
----
-
-## Table of Contents
+# Table of Contents
 
 [toc]
 
+Note: Only `h2` and `h3` are shown in toc.
+
+
+## Mastering Markdown
+
+Markdown allows you to write using an easy-to-read, easy-to-write plain text format, which then converts to valid HTML for viewing.
+
+[Mastering Markdown Guide](https://guides.github.com/features/mastering-markdown/).
+
+
+## ~~strikethrough~~
+
+
+## ++insert++
+
+
+## ==mark==
+
+
+## Subscript: H~2~O
+
+You can also use inline math: `$H_2O$`
+
+
+## Superscript: 29^th^
+
+You can also use inline math: `$29^{th}$`
+
+
+## Emoji: :panda_face: :sparkles: :camel: :boom: :pig:
+
+[Emoji Cheat Sheet](http://www.emoji-cheat-sheet.com/)
+
+
+## Fontawesome: :fa-cab: :fa-flag: :fa-bicycle: :fa-leaf: :fa-heart:
+
+[All the Font Awesome icons](http://fontawesome.io/icons/)
+
+
+## `print 'hello code'`
+
+    evens = [1, 2, 3, 4, 5].collect do |item|
+      item * 2
+    end
+
+```javascript
+$(document).ready(() => {
+  $('pre code').each((i, block) => {
+    hljs.highlightBlock(block);
+  });
+});
+```
+
+[Code Formatting](https://help.github.com/articles/markdown-basics/#code-formatting)
+
+
+## Tables and alignment
+
+First Header | Second Header
+------------ | -------------
+Content from cell 1 | Content from cell 2
+Content in the first column | Content in the second column
+
+| Left-Aligned  | Center Aligned  | Right Aligned |
+| :------------ |:---------------:| -----:|
+| col 3 is      | some wordy text | $1600 |
+| col 2 is      | centered        |   $12 |
+
+[Table Syntax](https://help.github.com/articles/github-flavored-markdown/#tables)
+
+
+## Task list
+
+- [ ] a bigger project
+  - [x] first subtask
+  - [x] follow up subtask
+  - [ ] final subtask
+- [ ] a separate task
+
+[Task List Syntax](https://help.github.com/articles/writing-on-github/#task-lists)
+
+
+## Abbreviation
+
+Markup is based on [php markdown extra](https://michelf.ca/projects/php-markdown/extra/#abbr) definition, but without multiline support:
+
+*[HTML]: Hyper Text Markup Language
+*[W3C]:  World Wide Web Consortium
+The HTML specification
+is maintained by the W3C.
+
+
+## Footnote
+
+Here is a footnote reference,[^1] and another.[^longnote]
+
+[^1]: Here is the footnote.
+
+[^longnote]: Here's one with multiple blocks.
+
+    Subsequent paragraphs are indented to show that they
+belong to the previous footnote.
+
+
+Here is an inline note.^[Inlines notes are easier to write, since
+you don't have to pick an identifier and move down to type the
+note.]
+
+[Footnote Syntax](http://pandoc.org/README.html#footnotes)
+
+
+## Mathematical formula `$y = x^2$`
+
+Inline math: `$\dfrac{ \tfrac{1}{2}[1-(\tfrac{1}{2})^n] }{ 1-\tfrac{1}{2} } = s_n$`.
+
+Math block:
+
+```katex
+\oint_C x^3\, dx + 4y^2\, dy
+
+2 = \left(
+ \frac{\left(3-x\right) \times 2}{3-x}
+ \right)
+
+\sum_{m=1}^\infty\sum_{n=1}^\infty\frac{m^2\,n}
+ {3^m\left(m\,3^n+n\,3^m\right)}
+
+\phi_n(\kappa) =
+ \frac{1}{4\pi^2\kappa^2} \int_0^\infty
+ \frac{\sin(\kappa R)}{\kappa R}
+ \frac{\partial}{\partial R}
+ \left[R^2\frac{\partial D_n(R)}{\partial R}\right]\,dR
+```
+
+[Mathematical Formula Syntax](http://meta.wikimedia.org/wiki/Help:Displaying_a_formula)
+
+
+## AsciiMath
+
+Inline AsciiMath: `@(1/2[1-(1/2)^n])/(1-(1/2))=s_n@`
+
+```AsciiMath
+oint_Cx^3 dx+4y^2 dy
+
+2=(((3-x)xx2)/(3-x))
+
+sum_(m=1)^oosum_(n=1)^oo(m^2 n)/(3^m(m3^n+n3^m)
+```
+
+```ASCIIMath
+phi_n(kappa) = 1/(4pi^2 kappa^2)
+ int_0^oo (sin(kappa R))/(kappa R)
+ del/(del R)
+[R^2 (del D_n (R))/(del R)] del R
+```
+
+[AsciiMath Documentation](http://asciimath.org/)
+
+
+## mermaid charts
+
+### Flowchart
+
+```mermaid
+graph TD
+A[Christmas] -->|Get money| B(Go shopping)
+B --> C{Let me think}
+C -->|One| D[Laptop]
+C -->|Two| E[iPhone]
+C -->|Three| F[Car]
+```
+
+[Flowchart Syntax](http://knsv.github.io/mermaid/#flowcharts-basic-syntax)
+
+::: warning
+Adding many flowcharts will slow down the editor.
+:::
+
+### Sequence diagram
+
+```mermaid
+sequenceDiagram
+loop every day
+    Alice->>John: Hello John, how are you?
+    John-->>Alice: Great!
+end
+```
+
+[Sequence Diagram Syntax](http://knsv.github.io/mermaid/#sequence-diagrams)
+
+::: warning
+Adding many sequence diagrams will slow down the editor.
+:::
+
+### Gantt diagram
+
+```mermaid
+gantt
+dateFormat  YYYY-MM-DD
+title Adding GANTT diagram to mermaid
+
+section A section
+Completed task            :done,    des1, 2014-01-06,2014-01-08
+Active task               :active,  des2, 2014-01-09, 3d
+Future task               :         des3, after des2, 5d
+Future task2               :         des4, after des3, 5d
+
+section Critical tasks
+Completed task in the critical line :crit, done, 2014-01-06,24h
+Implement parser and jison          :crit, done, after des1, 2d
+Create tests for parser             :crit, active, 3d
+Future task in critical line        :crit, 5d
+Create tests for renderer           :2d
+Add to mermaid                      :1d
+
+section Documentation
+Describe gantt syntax               :active, a1, after des1, 3d
+Add gantt diagram to demo page      :after a1  , 20h
+Add another diagram to demo page    :doc1, after a1  , 48h
+
+section Last section
+Describe gantt syntax               :after doc1, 3d
+Add gantt diagram to demo page      : 20h
+Add another diagram to demo page    : 48h
+```
+
+[Gantt Diagram Syntax](http://knsv.github.io/mermaid/#gant-diagrams)
+
+::: warning
+Adding many gantt diagrams will slow down the editor.
+:::
+
+### Class diagram
+
+```mermaid
+classDiagram
+Class01 <|-- AveryLongClass : Cool
+Class03 *-- Class04
+Class05 o-- Class06
+Class07 .. Class08
+Class09 --> C2 : Where am i?
+Class09 --* C3
+Class09 --|> Class07
+Class07 : equals()
+Class07 : Object[] elementData
+Class01 : size()
+Class01 : int chimp
+Class01 : int gorilla
+Class08 <--> C2: Cool label
+```
+
+Class diagram is powered by [mermaid](https://github.com/knsv/mermaid).
+
+::: warning
+Adding many class diagrams will slow down the editor.
+:::
+
+
+## Custom Container
+
+Markup is similar to fenced code blocks. Valid container types are `success`, `info`, `warning` and `danger`.
+
+::: info
+You have new mail.
+:::
+
+::: danger
+Staying up all night is bad for health.
+:::
+
+
+## Definition list
+
+Term 1
+  ~ Definition 1
+
+Term 2
+  ~ Definition 2a
+  ~ Definition 2b
+
+[Definition List Syntax](http://pandoc.org/README.html#definition-lists)
+
+
+## HTML
+
+If you find the markdown syntax too limited, you can try some <span style="color: blue;">HTML<span>:
+
+<p style="text-align:center;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/120px-HTML5_logo_and_wordmark.svg.png"/></p>
+
+<a href="https://github.com/tylingsoft/markdown-plus" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://aral.github.com/fork-me-on-github-retina-ribbons/right-green.png" alt="Fork me on GitHub"></a>
+
 
 ## Charts
+
+[Documentation for charts](http://www.chartjs.org/docs/)
 
 ### Line Chart
 
@@ -73,6 +350,10 @@ std::string
 }
 ```
 
+<br/>
+
+[Documentation for Line Chart](http://www.chartjs.org/docs/#line-chart)
+
 ### Bar Chart
 
 ```chart
@@ -121,6 +402,10 @@ std::string
   "options": {}
 }
 ```
+
+<br/>
+
+[Documentation for Bar Chart](http://www.chartjs.org/docs/#bar-chart)
 
 ### Radar Chart
 
@@ -180,6 +465,10 @@ std::string
 }
 ```
 
+<br/>
+
+[Documentation for Radar Chart](http://www.chartjs.org/docs/#radar-chart)
+
 ### Polar Area Chart
 
 ```chart
@@ -217,6 +506,10 @@ std::string
 }
 ```
 
+<br/>
+
+[Documentation for Polar Area Chart](http://www.chartjs.org/docs/#polar-area-chart)
+
 ### Pie Chart
 
 ```chart
@@ -251,6 +544,10 @@ std::string
   "options": {}
 }
 ```
+
+<br/>
+
+[Documentation for Pie Chart](http://www.chartjs.org/docs/#doughnut-pie-chart)
 
 ### Doughnut Chart
 
@@ -287,6 +584,10 @@ std::string
 }
 ```
 
+<br/>
+
+[Documentation for Doughnut Chart](http://www.chartjs.org/docs/#doughnut-pie-chart)
+
 ### Bubble Chart
 
 ```chart
@@ -317,307 +618,6 @@ std::string
 }
 ```
 
----
+<br/>
 
-## headings
-### heading 3
-#### 标题 4
-#### 标题 4
-#### 标题 4
-#### 标题
-#### 标题
-#### 标题
-##### heading 5
-###### heading 6
-
-
-## Github Flavored Markdown
-
-~~strikethrough~~
-
-header 1 | header 2
----|---
-row 1 col 1 | row 1 col 2
-row 2 col 1 | row 2 col 2
-
-http://example.com
-
-do_this_and_do_that_and_another_thing.
-
-
-## Fontawesome: :fa-cab: :fa-flag: :fa-bicycle: :fa-leaf: :fa-heart: :fa-does-not-exist:
-
-:fa-cab: :fa-flag: :fa-bicycle: :fa-leaf: :fa-heart: :fa-does-not-exist:
-
-
-## Emoji: :panda_face: :sparkles: :camel: :boom: :pig: :does_not_exist:
-
-:panda_face: :sparkles: :camel: :boom: :pig: :does_not_exist:
-
-
-## Task lists
-
-- hello world
-- [ ] @mentions, #refs, [links](), **formatting**, and <del>tags</del> are supported
-- [x] list syntax is required (any unordered or ordered list supported)
-1. [x] this is a complete item
-- [ ] this is an incomplete item **test** [ ] again
-
-
-- [ ] a bigger project
-  - [x] first subtask
-  - [x] follow up subtask
-  - [ ] final subtask
-- [ ] a separate task
-
-
-
-## Code blocks
-
-Before inline code `$(() => { console.log('Hello world') });` after inline code.
-
-```ruby
-[1, 2, 3, 4, 5].collect do |item|
-  item * 2
-end
-```
-
-
-```js
-$(document).ready(() => {
-  $('pre code').each((i, block) => {
-    hljs.highlightBlock(block);
-  });
-});
-```
-
-
-    for i in range(1, 10):
-        print 'Hello world {0}'.format(i)
-
-
-## HTML code
-
-<strong>Hello world</strong>
-
-
-## Math
-
-Inline math: `$E = mc^2$`, another one: `$\dfrac{ \tfrac{1}{2}[1-(\tfrac{1}{2})^n] }{ 1-\tfrac{1}{2} } = s_n$`.
-
-
-```katex
-\oint_C x^3\, dx + 4y^2\, dy
-
-2 = \left(
- \frac{\left(3-x\right) \times 2}{3-x}
- \right)
-
-\sum_{m=1}^\infty\sum_{n=1}^\infty\frac{m^2\,n}
- {3^m\left(m\,3^n+n\,3^m\right)}
-```
-
-```math
-\phi_n(\kappa) =
- \frac{1}{4\pi^2\kappa^2} \int_0^\infty
- \frac{\sin(\kappa R)}{\kappa R}
- \frac{\partial}{\partial R}
- \left[R^2\frac{\partial D_n(R)}{\partial R}\right]\,dR
-```
-
-
-## AsciiMath
-
-Inline AsciiMath: `@(1/2[1-(1/2)^n])/(1-(1/2))=s_n@`
-
-```AsciiMath
-oint_Cx^3 dx+4y^2 dy
-
-2=(((3-x)xx2)/(3-x))
-
-sum_(m=1)^oosum_(n=1)^oo(m^2 n)/(3^m(m3^n+n3^m)
-```
-
-```ASCIIMath
-phi_n(kappa) = 1/(4pi^2 kappa^2)
- int_0^oo (sin(kappa R))/(kappa R)
- del/(del R)
-[R^2 (del D_n (R))/(del R)] del R
-```
-
-
-## Flowchart
-
-```mermaid
-graph TD
-A[Hard edge] -->|Link text| B(Round edge)
-B ----> C{Decision}
-C -->|One| D[Result one]
-C -->|Two| E[Result two]
-```
-
-```
-graph TD
-A[Hard edge] -->|Link text| B(Round edge)
-B --> C{Decision}
-C -->|One| D[Result one]
-C -->|Two| E[Result two]
-```
-
-
-## Sequence diagram
-
-```mermaid
-sequenceDiagram
-Alice->>Bob: Hello Bob, how are you?
-alt is sick
-    Bob->>Alice: Not so good :(
-else is well
-    Bob->>Alice: Feeling fresh like a daisy
-end
-opt Extra response
-    Bob->>Alice: Thanks for asking
-end
-```
-
-
-## Gantt diagram
-
-```mermaid
-gantt
-title A Gantt Diagram
-dateFormat  YYYY-MM-DD
-section Section
-A task           :a1, 2014-01-01, 30d
-Another task     :after a1, 20d
-section Another
-Task in sec      :2014-01-12, 12d
-anther task      : 24d
-```
-
-
-## Class diagram
-
-```mermaid
-classDiagram
-Class01 <|-- AveryLongClass : Cool
-Class03 *-- Class04
-Class05 o-- Class06
-Class07 .. Class08
-Class09 --> C2 : Where am i?
-Class09 --* C3
-Class09 --|> Class07
-Class07 : equals()
-Class07 : Object[] elementData
-Class01 : size()
-Class01 : int chimp
-Class01 : int gorilla
-Class08 <--> C2: Cool label
-```
-
-
-## Subscript: H~2~O
-
-
-## Superscript: 29^th^
-
-
-## Footnote
-
-Here is a footnote reference,[^1] and another.[^longnote]
-
-[^1]: Here is the footnote.
-
-[^longnote]: Here's one with multiple blocks.
-
-    Subsequent paragraphs are indented to show that they
-belong to the previous footnote.
-
-
-Here is an inline note.^[Inlines notes are easier to write, since
-you don't have to pick an identifier and move down to type the
-note.]
-
-
-## Blockquotes
-
-> Blockquotes can also be nested...
->> ...by using additional greater-than signs right next to each other...
-> > > ...or with spaces between arrows.
-
-
-## Start list with offsets
-
-5. line one
-1. line two
-12. line three
-
-
-## Custom containers
-
-::: success
-success container
-
-**service@tylingsoft.com**
-:::
-
-::: info
-info container
-
-**service@tylingsoft.com**
-:::
-
-::: warning
-warning container
-
-**service@tylingsoft.com**
-:::
-
-::: danger
-danger container
-
-**service@tylingsoft.com**
-:::
-
-
-## Abbreviations
-
-Before the HTML & W3C definition.
-*[HTML]: Hyper Text Markup Language
-*[W3C]:  World Wide Web Consortium
-The HTML specification is maintained by the W3C.
-
-
-## Definition list
-
-Term 1
-
-:   Definition 1
-with lazy continuation.
-
-Term 2 with *inline markup*
-
-:   Definition 2
-
-        { some code, part of Definition 2 }
-
-    Third paragraph of definition 2.
-
-_Compact style:_
-
-Term 1
-  ~ Definition 1
-
-Term 2
-  ~ Definition 2a
-  ~ Definition 2b
-
-
-## insert
-
-++Inserted text++
-
-
-## mark
-
-==Marked text==
+[Documentation for Bubble Chart](http://www.chartjs.org/docs/#bubble-chart)
