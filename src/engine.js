@@ -15,6 +15,7 @@ import markdownItTaskList from 'markdown-it-task-list'
 import markdownItSourceMap from 'markdown-it-source-map'
 import markdownItChart from 'markdown-it-chart'
 import markdownItMermaid from 'markdown-it-mermaid'
+import markdownItMarkmap from 'markdown-it-markmap'
 
 const pluginMap = {
   'mark': markdownItMark,
@@ -29,7 +30,8 @@ const pluginMap = {
   'highlight': markdownItHighlight,
   'latex': markdownItLatex,
   'chart': markdownItChart,
-  'mermaid': markdownItMermaid
+  'mermaid': markdownItMermaid,
+  'mindmap': markdownItMarkmap
 }
 
 class Engine {

@@ -45,6 +45,12 @@ mdc.init = (markdown) => {
     }
   })
 
+  // mindmap
+    const mindmaps = document.querySelectorAll('.markmap-svg');
+    for(const mindmap of mindmaps) {
+        markmap.markmap(mindmap, JSON.parse(mindmap.innerHTML));
+    }
+
   mdc.inited()
 }
 
