@@ -45,8 +45,8 @@ mdc.init = (markdown) => {
     }
   })
 
-  // mindmap
-  const { Markmap, loadCSS, loadJS } = window.markmap;
+  // markmap
+  const { Markmap, loadCSS, loadJS, loadPlugins } = window.markmap;
   const mindmaps = document.querySelectorAll('#preview .markmap-svg');
   for(const mindmap of mindmaps) {
       data = JSON.parse(mindmap.innerHTML)

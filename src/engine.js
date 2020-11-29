@@ -31,7 +31,7 @@ const pluginMap = {
   'latex': markdownItLatex,
   'chart': markdownItChart,
   'mermaid': markdownItMermaid,
-  'mindmap': markdownItMarkmap
+  'markmap': markdownItMarkmap
 }
 
 class Engine {
