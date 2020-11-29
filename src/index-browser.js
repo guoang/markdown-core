@@ -3,6 +3,7 @@ import 'github-css'
 import mdc from './index-node'
 import Chart from 'chart.js'
 import Cookies from 'js-cookie'
+import { transform, getUsedAssets, getAssets } from 'markmap-lib';
 
 import 'markdown-it-latex/dist/index.css'
 import 'markdown-it-icons/dist/index.css'
@@ -49,12 +50,15 @@ mdc.init = (markdown) => {
   const { Markmap, loadCSS, loadJS, loadPlugins } = window.markmap;
   const mindmaps = document.querySelectorAll('#preview .markmap-svg');
   for(const mindmap of mindmaps) {
-      data = JSON.parse(mindmap.innerHTML)
-      // 1. load assets
-      if (data.styles) loadCSS(data.styles);
-      if (data.scripts) loadJS(data.scripts, { getMarkmap: () => window.markmap });
-      // 2. create markmap
-      Markmap.create(mindmap, null, data.root);
+      // 1. transform markdown
+      const { root, features } = transform(mindmap.innerHTML);
+      // 2. get assets
+      const { styles, scripts } = getAssets();
+      // 3. load assets
+      if (styles) loadCSS(styles);
+      if (scripts) loadJS(scripts, { getMarkmap: () => window.markmap });
+      // 4. create markmap
+      Markmap.create(mindmap, null, root);
   }
 
   mdc.inited()
